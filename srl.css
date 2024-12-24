@@ -8,52 +8,86 @@
 body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
-    background-color: #f4f4f4;
-    color: #333;
+    background: linear-gradient(to bottom, #000428, #004e92); /* Gradasi langit malam */
+    color: #fff;
+    overflow-x: hidden; /* Hindari scroll horizontal karena animasi */
+    position: relative;
 }
 
+/* Efek Bintang */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+    opacity: 0.5;
+    z-index: 1;
+}
+
+/* Efek Awan */
+body::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    background: url('https://www.transparenttextures.com/patterns/cloudy.png') repeat;
+    animation: moveClouds 60s linear infinite;
+    z-index: 2;
+    opacity: 0.3;
+}
+
+@keyframes moveClouds {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
 /* Container */
 .container {
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
+    padding: 20px;
 }
-
 /* Header */
 header {
-    background-color: #333;
+    background: transparent;
     color: #fff;
     padding: 80px 0;
     text-align: center;
-}
-
-header h1 {
-    font-size: 3rem;
-    margin-bottom: 10px;
-}
-
-header p {
-    font-size: 1.2rem;
-    margin-bottom: 20px;
+    position: relative;
+    z-index: 3;
 }
 
 .cta-button {
-    background-color: #e67e22;
     color: #fff;
     padding: 10px 20px;
     text-decoration: none;
     border-radius: 5px;
-    font-weight: bold;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid #fff;
+    transition: background-color 0.3s;
 }
 
 .cta-button:hover {
-    background-color: #d35400;
+    background-color: rgba(255, 255, 255, 0.4);
+    font-weight: bold;
 }
+
 
 /* About Section */
 .about {
     padding: 60px 0;
-    background-color: #fff;
+    background: rgba(0, 0, 0, 0.6);
     text-align: center;
+    z-index: 3;
+    position: relative;
 }
 
 .about h2 {
@@ -70,11 +104,11 @@ header p {
 
 .about-content img {
     border-radius: 50%;
-    width: 300px; /* Mengubah lebar gambar menjadi 150px */
-    height: 250px; /* Mengubah tinggi gambar menjadi 150px */
-    border-radius: 50%; /* Membuat gambar menjadi bulat */
-    object-fit: cover; /* Memastikan gambar tetap proporsional */
-    margin-right: 20px; /* Memberikan jarak antara gambar dan teks */
+    width: 300px;
+    height: 250px;
+    object-fit: cover;
+    margin-right: 20px;
+    border: 3px solid #fff;
 }
 
 .about-content p {
@@ -86,7 +120,7 @@ header p {
 /* Skills Section */
 .skills {
     padding: 60px 0;
-    background-color: #f9f9f9;
+    background: rgba(0, 0, 0, 0.5);
     text-align: center;
 }
 
@@ -102,10 +136,10 @@ header p {
 }
 
 .skill {
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.2);
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .skill h3 {
@@ -114,7 +148,7 @@ header p {
 
 .progress-bar {
     width: 100%;
-    background-color: #ddd;
+    background-color: #333;
     border-radius: 5px;
     overflow: hidden;
 }
@@ -124,15 +158,19 @@ header p {
     background-color: #3498db;
 }
 
+
 /* Projects Section */
 .projects {
     padding: 60px 0;
     text-align: center;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
 }
 
 .projects h2 {
     font-size: 2.5rem;
     margin-bottom: 20px;
+    color: #ffd700;
 }
 
 .project-cards {
@@ -142,11 +180,17 @@ header p {
 }
 
 .project-card {
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.1);
     width: 300px;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.project-card:hover {
+    transform: scale(1.05);
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 .project-card img {
@@ -158,27 +202,30 @@ header p {
 .project-card h3 {
     font-size: 1.5rem;
     margin-bottom: 10px;
+    color: #fff;
 }
 
 .project-card p {
     font-size: 1rem;
-    color: #666;
+    color: #ccc;
 }
 
 
 footer p {
     font-size: 1rem;
 }
-/* Kegiatan Saya Section */
+/* Activities Section */
 .activities {
     padding: 60px 0;
-    background-color: #f9f9f9;
     text-align: center;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
 }
 
 .activities h2 {
     font-size: 2.5rem;
     margin-bottom: 20px;
+    color: #ffd700;
 }
 
 .activity-cards {
@@ -189,17 +236,18 @@ footer p {
 }
 
 .activity-card {
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.1);
     width: 300px;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
     text-align: left;
-    transition: transform 0.3s;
+    transition: transform 0.3s, background-color 0.3s;
 }
 
 .activity-card:hover {
     transform: scale(1.05);
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 .activity-card img {
@@ -211,29 +259,32 @@ footer p {
 .activity-card h3 {
     font-size: 1.5rem;
     margin-bottom: 10px;
+    color: #fff;
 }
 
 .activity-card p {
     font-size: 1rem;
-    color: #666;
+    color: #ccc;
     line-height: 1.5;
 }
 /* Hubungi Saya Section */
+/* Contact Section */
 .contact {
     padding: 60px 0;
-    background-color: #f9f9f9;
+    background: rgba(0, 0, 0, 0.7);
     text-align: center;
+    border-radius: 10px;
 }
 
 .contact h2 {
     font-size: 2.5rem;
     margin-bottom: 20px;
-    color: #333;
+    color: #ffd700;
 }
 
 .contact p {
     font-size: 1.2rem;
-    color: #555;
+    color: #ccc;
     margin-bottom: 20px;
 }
 
@@ -250,19 +301,19 @@ footer p {
     justify-content: center;
     text-decoration: none;
     padding: 15px;
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.1);
     border-radius: 50px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, background-color 0.3s ease;
     width: 200px;
     max-width: 100%;
     text-align: center;
-    color: #333;
+    color: #fff;
 }
 
 .social-icon:hover {
     transform: scale(1.1);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 .social-icon img {
@@ -285,10 +336,13 @@ footer p {
     background-color: #25d366; /* WhatsApp Green */
     color: #fff;
 }
+/* Footer */
 footer {
-    background-color: #333; /* Warna latar belakang gelap */
-    color: #fff; /* Warna teks putih */
-    text-align: center; /* Teks rata tengah */
-    padding: 20px 0; /* Ruang di atas dan bawah */
-    font-family: 'Arial', sans-serif; /* Font modern dan bersih */
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    position: relative;
+    z-index: 3;
 }
+
